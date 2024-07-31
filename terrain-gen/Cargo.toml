@@ -7,4 +7,5 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
+noise = "0.9.0"
 wasm-bindgen = "0.2.92"

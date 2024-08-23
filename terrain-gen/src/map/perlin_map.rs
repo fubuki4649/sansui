@@ -1,4 +1,5 @@
 use noise::{NoiseFn, Perlin};
+use crate::map::trait_grid::Grid;
 
 /// A Perlin Noise heightmap
 struct PerlinMap {
@@ -10,7 +11,6 @@ struct PerlinMap {
 }
 
 impl PerlinMap {
-
     /// Generates a new Perlin Noise height map with dimensions x * y, with the given pitch and seed
     fn new(seed: u32, x: u32, y: u32, pitch: f64) -> Self {
         let mut map = PerlinMap {
@@ -32,10 +32,13 @@ impl PerlinMap {
 
         map
     }
+}
+
+impl Grid for PerlinMap {
 
     /// Return the data point at zero-indexed coordinates x, y
     fn get(&self, x: u32, y: u32) -> f64{
         self.values[(x * self.y + y) as usize]
     }
-
+    
 }

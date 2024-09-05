@@ -16,7 +16,7 @@ Compile terrain generation module to WASM
 cd terrain-gen && wasm-pack build --target web
 ```
 
-Run a web server
+Run a web server (from the main project directory)
 ```
 python3 -m http.server
 ```

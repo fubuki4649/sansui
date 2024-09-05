@@ -39,19 +39,19 @@ document.addEventListener('keydown', function(event) {
 
     switch(event.key) {
         case 'w':
-            camera.position.y += 1;
+            camera.position.y += 0.2;
             renderer.render(scene, camera);
             break;
         case 'a':
-            camera.position.x -= 1;
+            camera.position.x -= 0.2;
             renderer.render(scene, camera);
             break;
         case 's':
-            camera.position.y -= 1;
+            camera.position.y -= 0.2;
             renderer.render(scene, camera);
             break;
         case 'd':
-            camera.position.x += 1;
+            camera.position.x += 0.2;
             renderer.render(scene, camera);
             break;
         case 'o':
@@ -68,6 +68,14 @@ document.addEventListener('keydown', function(event) {
             break;
         case ';':
             camera.rotation.y -= 0.1;
+            renderer.render(scene, camera);
+            break;
+        case 'q':
+            camera.position.z += 0.2;
+            renderer.render(scene, camera);
+            break;
+        case 'e':
+            camera.position.z -= 0.2;
             renderer.render(scene, camera);
             break;
     }

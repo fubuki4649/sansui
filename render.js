@@ -1,41 +1,41 @@
 import * as THREE from 'three';
+import { addTriangle } from './triangles.js';
 
 // Create scene
-const scene = new THREE.Scene();
+export const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // Create renderer
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMapType = THREE.PCFSoftShadowMap;
 renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
 camera.position.z = 5;
 
 const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-scene.add( light );
+scene.add(light);
 
 
-// Add box to scene
+// Cube, for visual reference
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshPhongMaterial({ color: 0x0099ff });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
+// Add scene objects
+addTriangle([
+    0.0, 0.0, 0,
+    1.0, 0.0, 0,
+    0.0,  0.5, 1.0
+]);
 
 // Render scene
 renderer.render(scene, camera);
 
-// Animation function
-function animate() {
-    // Do nothing for now
-}
 
 // Handle camera movement
 document.addEventListener('keydown', function(event) {
-
-    console.log('Key pressed:', event.key);
 
     switch(event.key) {
         case 'w':

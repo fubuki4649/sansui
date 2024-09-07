@@ -13,7 +13,7 @@
 Compile terrain generation module to WASM
 
 ```sh
-cd terrain-gen && wasm-pack build --target web
+$(cd terrain-gen && wasm-pack build --target web)
 ```
 
 Run a web server (from the main project directory)

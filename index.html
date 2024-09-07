@@ -13,14 +13,8 @@
     </script>
 </head>
 <body>
-<script type="module" src="/render.js"></script>
 
-<script type="module">
-    import init, { greet } from "./terrain-gen/pkg/terrain_gen.js";
-    init().then(() => {
-        greet("WebAssembly");
-    });
-</script>
+<script type="module" src="/render.js"></script>
 
 <h1>
     WASM Rendering Test

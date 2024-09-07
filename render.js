@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { addTriangle } from './triangles.js';
+import { addTriangle } from './scene.js';
 
 // Create scene
 export const scene = new THREE.Scene();
@@ -13,9 +13,9 @@ document.body.appendChild(renderer.domElement);
 
 camera.position.z = 5;
 
+// Set Light
 const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add(light);
-
 
 // Cube, for visual reference
 const geometry = new THREE.BoxGeometry(1, 1, 1);

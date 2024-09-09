@@ -1,13 +1,11 @@
 import * as THREE from 'three';
 
-export const scene = new THREE.Scene();
-export const renderer = new THREE.WebGLRenderer();
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGLRenderer();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 
 export function init() {
-
-    // Create scene
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     // Create renderer
     renderer.shadowMapType = THREE.PCFSoftShadowMap;
@@ -26,11 +24,13 @@ export function init() {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    // Render scene
-    renderer.render(scene, camera);
+    renderScene();
 
 }
 
+export function renderScene() {
+    renderer.render(scene, camera);
+}
 
 // Add triangle function
 // Consumes a 3x3 matrix

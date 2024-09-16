@@ -1,7 +1,10 @@
 import {addTriangle, renderScene} from "./render.js";
+import init, { generate_terrain, retrieve_terrain } from '../terrain-gen/pkg/terrain_gen.js';
 
-let mapWidth = 0;
+await init();
+
 let mapLength = 0;
+let mapWidth = 0;
 
 let heightMap = new Float32Array(0);
 
@@ -10,33 +13,35 @@ function getHeightValue(x, y) {
 }
 
 // Calls WASM code to generate the terrain
-export function generateTerrain(width, length) {
-
-    mapWidth = width;
+export function generateTerrain(seed, length, width) {
     mapLength = length;
+    mapWidth = width;
 
-    // Call WASM code to generate scene
+    generate_terrain(seed, length, width);
 }
 
+
+// Call WASM code to retrieve mesh data
 export function retrieveTerrain() {
-
-    // Call WASM code to retrieve mesh data
-
+    heightMap = retrieve_terrain();
 }
 
 
 // TODO: remove this later, its used for testing
 export function test() {
 
-    mapWidth = 4
-    mapLength = 4
+    // mapWidth = 4
+    // mapLength = 4
+    //
+    // heightMap = new Float32Array([
+    //     1, 2, 3, 4,
+    //     2, 3, 4, 5,
+    //     3, 4, 5, 6,
+    //     4, 5, 6, 7
+    // ])
 
-    heightMap = new Float32Array([
-        1, 2, 3, 4,
-        2, 3, 4, 5,
-        3, 4, 5, 6,
-        4, 5, 6, 7
-    ])
+    generateTerrain(54352534, 10, 10);
+    retrieveTerrain();
 
     showTerrain();
 

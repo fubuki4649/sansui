@@ -1,3 +1,3 @@
-mod perlin_map;
-mod height_map;
-mod trait_grid;
+pub mod perlin_map;
+pub mod height_map;
+pub mod trait_grid;

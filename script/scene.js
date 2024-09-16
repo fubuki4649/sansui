@@ -41,9 +41,13 @@ export function test() {
     // ])
 
     generateTerrain(54352534, 10, 10);
-    retrieveTerrain();
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    delay(60000).then(r => {
+        retrieveTerrain()
+        showTerrain();
 
-    showTerrain();
+        console.log(heightMap)
+    });
 
 }
 

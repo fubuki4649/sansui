@@ -20,7 +20,7 @@ pub fn generate_terrain(seed: u32, x: u32, y: u32) {
     
     let mut map = HEIGHTMAP.lock().unwrap();
     map.init(seed, x, y, 1.0);
-    
+
 }
 
 #[wasm_bindgen]

@@ -34,7 +34,7 @@ impl Grid for PerlinMap {
         self.x = x;
         self.y = y;
         self.pitch = pitch;
-        self.values = Vec::with_capacity((x * y) as usize).into_boxed_slice();
+        self.values = vec![0.0; (x * y) as usize].into_boxed_slice();
 
         // Populate the struct with values
         let p = Perlin::new(seed);

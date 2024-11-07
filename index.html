@@ -2,7 +2,8 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8" />
-    <title>hello-wasm example</title>
+    <title>Sansui - Terrain Rendering UI</title>
+    <title>Sansui - Terrain Rendering UI</title>
     <script type="importmap">
         {
             "imports": {
@@ -16,9 +17,24 @@
 
 <script type="module" src="/script/main.js"></script>
 
-<h1>
-    WASM Rendering Test
-</h1>
+<div style="display: flex; margin-top: -8px; align-items: center; gap: 20px">
+
+    <h1>
+        Rust-WASM Terrain Generator
+    </h1>
+
+    <label for="length">Length: </label>
+    <input type="text" id="length" name="length">
+
+    <label for="width">Width: </label>
+    <input type="text" id="width" name="width">
+
+    <label for="seed">Seed: </label>
+    <input type="text" id="seed" name="seed">
+
+    <button>Render</button>
+
+</div>
 
 </body>
 </html>

@@ -40,7 +40,7 @@ export function test() {
     //     4, 5, 6, 7
     // ])
 
-    generateTerrain(5893949765, 100, 100);
+    generateTerrain(5893949765, 15, 15);
     const delay = ms => new Promise(res => setTimeout(res, ms));
     delay(60000).then(r => {
         retrieveTerrain()

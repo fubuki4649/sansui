@@ -40,7 +40,7 @@ export function test() {
     //     4, 5, 6, 7
     // ])
 
-    generateTerrain(54352534, 10, 10);
+    generateTerrain(5893949765, 100, 100);
     const delay = ms => new Promise(res => setTimeout(res, ms));
     delay(60000).then(r => {
         retrieveTerrain()
@@ -62,15 +62,15 @@ export function showTerrain() {
                 bottomLeft = getHeightValue(row, col + 1), bottomRight = getHeightValue(row + 1, col + 1);
 
             addTriangle([
-                row, col, topLeft,
-                row + 1, col, topRight,
-                row,  col + 1, bottomLeft
+                row, topLeft, col,
+                row + 1, topRight, col,
+                row, bottomLeft,  col + 1,
             ])
 
             addTriangle([
-                row + 1, col + 1, bottomRight,
-                row + 1, col, topRight,
-                row,  col + 1, bottomLeft
+                row + 1, bottomRight, col + 1,
+                row + 1, topRight, col,
+                row, bottomLeft, col + 1,
             ])
 
         }

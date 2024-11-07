@@ -23,6 +23,10 @@ impl PerlinMap {
             values: Box::new([])
         }
     }
+
+    fn normalize(x: u32, y: u32, point: [f64; 2]) -> [f64; 2] {
+        [point[0] / (x - 1) as f64, point[1] / (y - 1) as f64]
+    }
 }
 
 impl Grid for PerlinMap {
@@ -41,7 +45,7 @@ impl Grid for PerlinMap {
 
         for i in 0..x {
             for j in 0..y {
-                self.values[(i * y + j) as usize] = p.get([i as f64 * pitch, j as f64 * pitch])
+                self.values[(i * y + j) as usize] = p.get(Self::normalize(x, y, [i as f64 * pitch, j as f64 * pitch]))
             }
         }
         

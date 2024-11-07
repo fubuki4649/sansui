@@ -24,32 +24,9 @@ export function generateTerrain(seed, length, width) {
 // Call WASM code to retrieve mesh data
 export function retrieveTerrain() {
     heightMap = retrieve_terrain();
+    console.log(heightMap)
 }
 
-
-// TODO: remove this later, its used for testing
-export function test() {
-
-    // mapWidth = 4
-    // mapLength = 4
-    //
-    // heightMap = new Float32Array([
-    //     1, 2, 3, 4,
-    //     2, 3, 4, 5,
-    //     3, 4, 5, 6,
-    //     4, 5, 6, 7
-    // ])
-
-    generateTerrain(5893949765, 15, 15);
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-    delay(60000).then(r => {
-        retrieveTerrain()
-        showTerrain();
-
-        console.log(heightMap)
-    });
-
-}
 
 // Loads terrain data into scene
 export function showTerrain() {

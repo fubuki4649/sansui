@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>Sansui - Terrain Rendering UI</title>
-    <title>Sansui - Terrain Rendering UI</title>
     <script type="importmap">
         {
             "imports": {
@@ -17,6 +16,20 @@
 
 <script type="module" src="/script/main.js"></script>
 
+<script type="module">
+
+    import {onRender} from "/script/main.js";
+
+    // Get a reference to the button
+    const button = document.getElementById('renderBtn');
+
+    // Add a click event listener to the button
+    button.addEventListener('click', function() {
+        onRender();
+    });
+
+</script>
+
 <div style="display: flex; margin-top: -8px; align-items: center; gap: 20px">
 
     <h1>
@@ -24,15 +37,15 @@
     </h1>
 
     <label for="length">Length: </label>
-    <input type="text" id="length" name="length">
+    <input type="number" id="length" value="15">
 
     <label for="width">Width: </label>
-    <input type="text" id="width" name="width">
+    <input type="number" id="width" value="15">
 
     <label for="seed">Seed: </label>
-    <input type="text" id="seed" name="seed">
+    <input type="number" id="seed" value="2693356727">
 
-    <button>Render</button>
+    <button id="renderBtn">Render</button>
 
 </div>
 

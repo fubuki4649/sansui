@@ -18,14 +18,20 @@
 
 <script type="module">
 
-    import {onRender} from "/script/main.js";
+    import {onRender, reScale} from "/script/main.js";
 
     // Get a reference to the button
-    const button = document.getElementById('renderBtn');
+    const renderBtn = document.getElementById('renderBtn');
+    const scaleBtn = document.getElementById('updateHeightScaleBtn');
 
     // Add a click event listener to the button
-    button.addEventListener('click', function() {
+    renderBtn.addEventListener('click', function() {
         onRender();
+    });
+
+    // Add a click event listener to the button
+    scaleBtn.addEventListener('click', function() {
+        reScale();
     });
 
 </script>
@@ -36,16 +42,23 @@
         Rust-WASM Terrain Generator
     </h1>
 
-    <label for="length">Length: </label>
-    <input type="number" id="length" value="15">
+    <label for="length" style="">Length: </label>
+    <input type="number" id="length" value="15" style="width: 75px;">
 
     <label for="width">Width: </label>
-    <input type="number" id="width" value="15">
+    <input type="number" id="width" value="15" style="width: 75px;">
 
     <label for="seed">Seed: </label>
-    <input type="number" id="seed" value="2693356727">
+    <input type="number" id="seed" value="2693356727" style="width: 135px;">
 
     <button id="renderBtn">Render</button>
+
+    <div style="height: 50px; border: 1px solid lightslategrey;"></div>
+
+    <label for="heightScale">Height scaling: </label>
+    <input type="number" id="heightScale" value="1" style="width: 50px;">
+
+    <button id="updateHeightScaleBtn">Update</button>
 
 </div>
 

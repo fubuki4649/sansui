@@ -1,5 +1,6 @@
-import {addTriangle, renderScene} from "./render.js";
+import {addTriangle, clearScene, renderScene} from "./render.js";
 import init, { generate_terrain, retrieve_terrain } from '../terrain-gen/pkg/terrain_gen.js';
+import {scene} from "./render.js";
 
 await init();
 
@@ -29,7 +30,9 @@ export function retrieveTerrain() {
 
 
 // Loads terrain data into scene
-export function showTerrain() {
+export function showTerrain(scaleFactor = 1) {
+
+    clearScene()
 
     for(let col = 0; col < mapWidth - 1; col++) {
 
@@ -39,15 +42,15 @@ export function showTerrain() {
                 bottomLeft = getHeightValue(row, col + 1), bottomRight = getHeightValue(row + 1, col + 1);
 
             addTriangle([
-                row, topLeft, col,
-                row + 1, topRight, col,
-                row, bottomLeft,  col + 1,
+                row, scaleFactor * topLeft, col,
+                row + 1, scaleFactor * topRight, col,
+                row, scaleFactor * bottomLeft,  col + 1,
             ])
 
             addTriangle([
-                row + 1, bottomRight, col + 1,
-                row + 1, topRight, col,
-                row, bottomLeft, col + 1,
+                row + 1, scaleFactor * bottomRight, col + 1,
+                row + 1, scaleFactor * topRight, col,
+                row, scaleFactor * bottomLeft, col + 1,
             ])
 
         }

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-const scene = new THREE.Scene();
+export const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -26,6 +26,33 @@ export function init() {
 
     renderScene();
 
+}
+
+export function clearScene() {
+
+    let toRemove = [];
+
+    // Traverse the scene and collect non-essential objects
+    scene.traverse((object) => {
+        // Skip cameras and lights
+        if (object.isCamera || object.isLight) return;
+
+        // Skip the scene itself
+        if (object === scene) return;
+
+        toRemove.push(object);
+    });
+
+    // Remove all meshes and their geometries/materials
+    toRemove.forEach(object => {
+        if (object.geometry) object.geometry.dispose();
+        scene.remove(object);
+    })
+
+    // Clear cache
+    if (THREE.Cache) {
+        THREE.Cache.clear();
+    }
 }
 
 export function renderScene() {

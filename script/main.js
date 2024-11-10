@@ -12,7 +12,7 @@ function isInteger(value) {
     return !isNaN(parseInt(value)) && isFinite(value);
 }
 
-export function onRender(number) {
+export function onRender() {
 
     let length = document.getElementById('length').value;
     let width = document.getElementById('width').value;
